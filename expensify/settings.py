@@ -70,7 +70,9 @@ SHORT_DATETIME_FORMAT = 'T/m/d P'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,14 +88,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'expensify.wsgi.application'
 
 # Django's auth framework's login settings
-# LOGIN_REDIRECT_URL = 'index'
-# LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
 
 # Management of static and user-uploaded files
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 # Internationalization/localization settings
 TIME_ZONE = 'Asia/Dhaka'

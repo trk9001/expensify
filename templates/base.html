@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<title>{% block title %}{% endblock %} | Expensify</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <a href="{% url 'index' %}" class="navbar-brand">Expensify</a>
+
+  <div class="navbar-nav mr-auto">
+    <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+    <a class="nav-item nav-link disabled" href="#">Expenses</a>
+  </div>
+
+  <span class="navbar-text ml-auto">
+    {% if user.is_authenticated %}
+    Welcome, {{ user.username }}!
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+    {% endif %}
+  </span>
+</nav>
+
+<main>
+  {% block content %}
+  {% endblock %}
+</main>
