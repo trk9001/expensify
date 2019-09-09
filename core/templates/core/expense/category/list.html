@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Expense categories{% endblock %}
+
+{% block content %}
+  <div class="container my-5 py-5">
+    <div class="row">
+      <div class="col-5 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h1>Your expense categories</h1>
+            <button class="btn btn-primary mr-auto" type="button">New</button>
+          </div>
+          <div class="card-body">
+          {# TODO: Add check for empty list #}
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Category</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for category in object_list %}
+              {% if not category.hidden %}
+              <tr>
+                <td>{{ category.name }}</td>
+                <td>Dummy</td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
